@@ -67,9 +67,12 @@ router.delete('/delete/:id',(req,res)=>{
 
 });
 router.put('/update/:id',(res,req)=>{
+    console.log('*************')
+    console.log(req.params,'<=====');
     const {id} = req.params;
     const {data} = req.body;
-    const book = books.find((each)=>each.id===Number(id));
+    console.log(data,'<====');
+    const book = books.find((each)=>each.id===id);
     if(!book){
         return res.status(404).json({
             success:false,
@@ -112,6 +115,7 @@ router.get('/issuedBooks',(req,res)=>{
         data:issued_book_list,
     })
 })
+
 
 
 module.exports=router;// defualt export
